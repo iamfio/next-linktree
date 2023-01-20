@@ -1,0 +1,35 @@
+{
+  "name": "Fio Go",
+  "avatar": "https://faces-img.xcdn.link/image-lorem-face-5751.jpg",
+  "links": [
+    {
+      "title": "Twitter",
+      "href": "https://twitter.com/casusarts",
+      "image": "https://picsum.photos/200"
+    },
+    {
+      "title": "GitHub",
+      "href": "https://github.com/casusarts",
+      "image": "https://picsum.photos/200"
+    },
+    {
+      "title": "Instagram",
+      "href": "https://instagram.com/casusarts",
+      "image": "https://picsum.photos/200"
+    }
+  ],
+  "socials": [
+    {
+      "title": "Twitter",
+      "href": "https://twitter.com/casusarts"
+    },
+    {
+      "title": "GitHub",
+      "href": "https://github.com/casusarts"
+    },
+    {
+      "title": "Instagram",
+      "href": "https://instagram.com/casusarts"
+    }
+  ]
+}
