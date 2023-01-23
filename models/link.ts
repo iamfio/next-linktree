@@ -1,12 +1,12 @@
 import { model, models, Schema } from 'mongoose'
 
-export interface ILinkEntity {
+export interface ILink {
   href: string
   title: string
   image?: string
 }
 
-const linkSchema = new Schema<ILinkEntity>(
+const linkSchema = new Schema<ILink>(
   {
     href: { type: String, required: true },
     title: { type: String, required: true },
@@ -18,6 +18,6 @@ const linkSchema = new Schema<ILinkEntity>(
 )
 
 const LinkEntity =
-  models.LinkEntity || model<ILinkEntity>('LinkEntity', linkSchema)
+  models.LinkEntity || model<ILink>('LinkEntity', linkSchema)
 
 export default LinkEntity

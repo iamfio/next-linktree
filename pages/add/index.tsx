@@ -1,4 +1,4 @@
-import { ILinkEntity } from '@/models/link'
+import { ILink } from '@/models/Link'
 import { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import { FormEvent, FormEventHandler, useState } from 'react'
@@ -6,7 +6,7 @@ import { FormEvent, FormEventHandler, useState } from 'react'
 const AddPage: NextPage = (): JSX.Element => {
   const router = useRouter()
 
-  const [formData, setFormData] = useState<ILinkEntity>({
+  const [formData, setFormData] = useState<ILink>({
     href: '',
     title: '',
     image: '',

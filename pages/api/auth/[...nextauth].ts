@@ -71,5 +71,10 @@ export default async function auth(req: NextApiRequest, res: NextApiResponse) {
       error: '/auth/error',
     },
     secret: process.env.JWT_SECRET,
+    callbacks: {
+      async session({ session, user, token }) {
+        return session
+      },
+    },
   })
 }

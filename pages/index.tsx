@@ -1,12 +1,12 @@
 import Link from 'next/link'
 import { LinkCard } from '@/components/LinkCard'
-import { ILinkEntity } from '@/models/link'
+import { ILink } from '@/models/Link'
 import { GetStaticProps } from 'next'
 import { signIn, signOut, useSession } from 'next-auth/react'
 
 export const getStaticProps: GetStaticProps = async () => {
   const res = await fetch('http://localhost:3000/api/links')
-  const links: ILinkEntity[] = await res.json()
+  const links: ILink[] = await res.json()
 
   return {
     props: {
@@ -15,7 +15,7 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 }
 
-const Home = ({ links }: { links: ILinkEntity[] }) => {
+const Home = ({ links }: { links: ILink[] }) => {
   const { data: session, status } = useSession()
 
   return (
@@ -45,7 +45,7 @@ const Home = ({ links }: { links: ILinkEntity[] }) => {
         </div>
       </Link>
 
-      {links.map((link: ILinkEntity) => (
+      {links.map((link: ILink) => (
         <LinkCard key={link.href} {...link} />
       ))}
     </div>

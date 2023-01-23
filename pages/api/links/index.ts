@@ -1,4 +1,4 @@
-import LinkEntity, { ILinkEntity } from '@/models/link'
+import LinkEntity, { ILink } from '@/models/Link'
 import { connectMongo } from '@/utils/connectMongo'
 import { NextApiRequest, NextApiResponse } from 'next'
 
@@ -12,7 +12,7 @@ export default async function handler(
     const { href, title, image } = req.body
 
     try {
-      const link = await LinkEntity.create<ILinkEntity>({ href, title, image })
+      const link = await LinkEntity.create<ILink>({ href, title, image })
 
       res.status(201).json(link)
     } catch (error) {
@@ -20,7 +20,7 @@ export default async function handler(
     }
   } else if (req.method === 'GET') {
     try {
-      const links = await LinkEntity.find<ILinkEntity>()
+      const links = await LinkEntity.find<ILink>()
 
       res.status(200).json(links)
     } catch (error) {

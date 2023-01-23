@@ -20,7 +20,7 @@ const SignInPage: NextPage = (): JSX.Element => {
     }))
   }
 
-  const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
+  const handleSubmit: FormEventHandler<HTMLFormElement> = async (e: FormEvent) => {
     // const router = useRouter()
 
     // TODO: validate userInfo

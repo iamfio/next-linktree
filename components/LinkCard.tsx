@@ -1,7 +1,7 @@
-import { ILinkEntity } from '@/models/link'
+import { ILink } from '@/models/Link'
 import Image from 'next/image'
 
-export const LinkCard = ({ href, title, image }: ILinkEntity) => {
+export const LinkCard = ({ href, title, image }: ILink) => {
   return (
     <a
       href={href}
