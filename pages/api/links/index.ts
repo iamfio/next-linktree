@@ -9,7 +9,6 @@ export default async function handler(
   await connectMongo()
 
   if (req.method === 'POST') {
-    // const { href, title, image } = JSON.parse(req.body)
     const { href, title, image } = req.body
 
     try {

@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { FormEvent, useState } from 'react'
+import { FormEvent, FormEventHandler, useState } from 'react'
 
 const AddPage = () => {
   const router = useRouter()
@@ -20,7 +20,9 @@ const AddPage = () => {
     }))
   }
 
-  const handleSubmit = async (e: FormEvent) => {
+  const handleSubmit: FormEventHandler<HTMLFormElement> = async (
+    e: FormEvent
+  ) => {
     e.preventDefault()
 
     const options = {
@@ -30,7 +32,7 @@ const AddPage = () => {
       },
       body: JSON.stringify(formData),
     }
-    
+
     await fetch(`/api/links`, options)
     // const response = await fetch(`/api/links`, options)
     // const result = await response.json()
