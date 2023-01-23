@@ -1,10 +1,12 @@
+import { ILinkEntity } from '@/models/link'
+import { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import { FormEvent, FormEventHandler, useState } from 'react'
 
-const AddPage = () => {
+const AddPage: NextPage = (): JSX.Element => {
   const router = useRouter()
 
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<ILinkEntity>({
     href: '',
     title: '',
     image: '',
@@ -21,21 +23,17 @@ const AddPage = () => {
   }
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (
-    e: FormEvent
+    e: FormEvent<HTMLFormElement>
   ) => {
     e.preventDefault()
 
-    const options = {
+    await fetch(`/api/links`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(formData),
-    }
-
-    await fetch(`/api/links`, options)
-    // const response = await fetch(`/api/links`, options)
-    // const result = await response.json()
+    })
 
     router.push('/')
   }

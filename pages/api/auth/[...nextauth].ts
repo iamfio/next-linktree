@@ -70,5 +70,6 @@ export default async function auth(req: NextApiRequest, res: NextApiResponse) {
       signOut: '/auth/signout',
       error: '/auth/error',
     },
+    secret: process.env.JWT_SECRET,
   })
 }

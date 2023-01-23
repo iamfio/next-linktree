@@ -1,7 +1,7 @@
 import { NextPage } from 'next'
 import { signIn } from 'next-auth/react'
 import Router from 'next/router'
-import React, { FormEvent, useState } from 'react'
+import React, { FormEvent, FormEventHandler, useState } from 'react'
 
 const SignUpPage: NextPage = (): JSX.Element => {
   const [userInfo, setUserInfo] = useState<{
@@ -23,8 +23,11 @@ const SignUpPage: NextPage = (): JSX.Element => {
     }))
   }
 
-  const handleOnSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handleOnSubmit: FormEventHandler<HTMLFormElement> = async (
+    e: FormEvent<HTMLFormElement>
+  ) => {
     e.preventDefault()
+    
     setMessage(null)
 
     const res = await fetch('/api/auth/register', {
@@ -42,19 +45,20 @@ const SignUpPage: NextPage = (): JSX.Element => {
 
     const data = await res.json()
 
-    if (data.message) {
+    if (res.ok && data.user) {
+      // TODO: Improve Flash messages
       setMessage(data.message)
-    }
 
-    if (data.message === 'User registered successfully') {
-      const res = await signIn('credentials', {
+      alert(`Hello, ${data.user.username}!`)
+
+      await signIn('credentials', {
         email: data.user.email,
         password: data.user.password,
         redirect: false,
       })
-    }
 
-    return Router.push('/')
+      return Router.push('/')
+    }
   }
 
   return (
@@ -131,7 +135,7 @@ const SignUpPage: NextPage = (): JSX.Element => {
               type="submit"
               className="py-2 px-4 my-12 bg-white hover:bg-purple-500 text-purple-800 hover:text-gray-100 transition-all duration-100 font-semibold rounded-lg"
             >
-              Sign In
+              Sign Up
             </button>
           </div>
         </form>
